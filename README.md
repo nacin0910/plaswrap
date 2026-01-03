@@ -20,6 +20,20 @@
 
 ## 🛠️ Installation
 
+
+### Package Installation
+Once the environments are created, activate the main environment and install Plaswrap:
+
+```bash
+
+# 1. Clone the repository
+git clone https://github.com/nacin0910/Plaswrap.git
+cd Plaswrap
+
+# 2. Install via pip
+pip install .
+
+```
 ### Environment Setup (Crucial)
 **Plaswrap operates using a multi-environment strategy.** The main wrapper runs in the `plaswrap` environment, while specific sub-modules rely on their own isolated Conda environments to handle conflicting dependencies.
 
@@ -27,42 +41,24 @@ You **MUST** create the following 5 conda environments before running Plaswrap. 
 
 1.  **Main Environment (Plaswrap)**
     ```bash
-    conda env create -f plaswrap.yaml
+    conda env create -f requirements/plaswrap.yaml
     ```
 2.  **PlasForest Environment**
     ```bash
-    conda env create -f plasforest.yaml
+    conda env create -f requirements/plasforest.yaml
     ```
 3.  **PlasX Environment**
     ```bash
-    conda env create -f plasx.yaml
+    conda env create -f requirements/plasx.yaml
     ```
 4.  **Plascad Environment** (for mobility analysis)
     ```bash
-    conda env create -f plascad.yaml
+    conda env create -f requirements/plascad.yaml
     ```
 5.  **Bakta Environment** (for annotation)
     ```bash
-    conda env create -f bakta.yaml
+    conda env create -f requirements/bakta.yaml
     ```
-
-### Package Installation
-Once the environments are created, activate the main environment and install Plaswrap:
-
-```bash
-# 1. Activate the main environment
-conda activate plaswrap
-
-# 2. Clone the repository
-git clone [https://github.com/yourusername/Plaswrap.git](https://github.com/yourusername/Plaswrap.git)
-cd Plaswrap
-
-# 3. Install via pip
-pip install .
-
-```
-
-> **Note for Developers:** If you are modifying the code, use `pip install -e .` for editable mode.
 
 ---
 
@@ -73,6 +69,10 @@ Plaswrap requires several databases. You can download them individually using th
 **Example: Downloading databases for PlasForest and Platon**
 
 ```bash
+
+# Activate the main environment
+conda activate plaswrap
+
 # Download PlasForest DB (Requires specifying output directory)
 Plaswrap plasforest download-db -o /path/to/databases/plasforest_db
 
@@ -95,6 +95,7 @@ The default workflow (`end_to_end_wf`) now focuses on the most accurate predicto
 **Command:**
 
 ```bash
+
 Plaswrap end_to_end_wf \
   -i assemblies.fasta \
   -o results_output \
